@@ -1,0 +1,14 @@
+.box {
+    width: 80%;
+    margin: 50px auto;
+
+}
+
+.error {
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+}

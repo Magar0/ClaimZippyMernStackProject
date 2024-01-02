@@ -23,7 +23,19 @@
 }
 
 .table {
-    margin-bottom: 200px;
+    margin-bottom: 30px;
+    display: block;
+    max-height: 40vh;
+    overflow-y: auto;
+    border: solid 1px #0000003e;
+
+}
+
+.table>thead,
+.table>tbody {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .table th {
@@ -31,15 +43,29 @@
 }
 
 .table thead th {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     background-color: var(--bs-secondary);
     padding: 7px 2px;
+    color: white;
 }
 
 .table thead input {
     width: 100%;
     margin-top: 5px;
     /* font-size: 0.9rem; */
+    padding: 5px;
+}
+
+.table tbody tr:nth-child(odd) td {
+    background-color: rgb(188, 246, 205);
+}
+
+.table tbody tr:nth-child(even) td {
+    background-color: rgb(205, 230, 238);
+}
+
+input {
+    border: solid 1px #0000003e;
     padding: 5px;
 }

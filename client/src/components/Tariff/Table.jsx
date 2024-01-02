@@ -2,35 +2,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { tariffApi, useFetchTariffQuery } from "../../store/slices/tariffAPI";
 import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
+import TableData from "./TableData";
 
 
 const Table = () => {
 
-    // const dispatch = useDispatch();
-    // const status = useFetchTariffQuery();
-    // console.log(status);
-
-
+    // fetching data from api using saga and RTK Query
     const { data, isLoading, isError } = useFetchTariffQuery();
-    console.log("data", data);
-    // console.log("loader: ", isLoading, " error: ", isError);
 
     // // useEffect(() => {
     // //     const data = async () => await dispatch(tariffApi.endpoints.fetchTariff.initiate())
     // //     console.log(data());
     // // }, [])
 
-    // if (isLoading) {
-    //     return <Loading />
-    // }
+    if (isLoading) {
+        return <Loading />
+    }
 
-    // if (isError) {
-    //     return <h1 style={{ color: red }}>Something Went Wrong</h1>
-    // }
+    if (isError || !data) {
+        return <Error />
+    }
 
     return (
-        <table className='table mt-4'>
-            <thead>
+        <table className='table mt-4 '>
+            <thead className="table-head">
                 <tr>
                     <th rowSpan={3}>S.No.br <br /> <input type="text" placeholder='search' /> </th>
                     <th rowSpan={3}>CZ Catlog Master Id <br /> <input type="text" placeholder='search' /></th>
@@ -53,15 +49,10 @@ const Table = () => {
                 </tr>
 
             </thead>
-            <tbody>
-                {
-                    // !data && <h1> No Data Found </h1>
-                }
-                {/* {
-                    data && data.map((tariffData, ind) => (
-                        <Table key={ind} tariffData={tariffData} />
-                    ))
-                } */}
+            <tbody className="table-body">
+                {data && data.map((e, ind) => (
+                    <TableData key={e._id} tariff={e} ind={ind} />
+                ))}
             </tbody>
         </table>
     )

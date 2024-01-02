@@ -1,8 +1,8 @@
-import './loading.css'
+import styles from './loading.css'
 
 const Loading = () => {
     return (
-        <div class="loader"></div>
+        <div className={styles.loader}></div>
     )
 }
 

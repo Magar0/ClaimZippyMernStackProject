@@ -6,7 +6,7 @@ export const documentApi = createApi({
     reducerPath: 'documentApi',
     baseQuery: fetchBaseQuery({ baseUrl: URL }),
     endpoints: (build) => ({
-        fetchBaseQuery: build.query({
+        fetchDocument: build.query({
             query: () => '/document'
         }),
         postDocument: build.mutation({

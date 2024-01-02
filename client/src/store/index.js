@@ -7,7 +7,8 @@ import { documentApi } from "./slices/documentApi";
 
 
 
-const URL = 'Http://localhost:3000'
+const URL = 'https://claim-zippy-mern-stack-project.vercel.app'
+// const URL = 'http://localhost:3000'
 const sagaMiddleWare = createSagaMiddleware();
 
 const store = configureStore({

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const URL = "http://localhost:3000";
+const URL = "https://claim-zippy-mern-stack-project.vercel.app";
 
 export const documentApi = createApi({
     reducerPath: 'documentApi',

@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isMenuOpen: false,
-    document: [],
-    tariff: [],
+    // document: [],
+    // tariff: [],
 }
 
 const taskSlices = createSlice({
@@ -13,14 +13,14 @@ const taskSlices = createSlice({
         setIsMenuOpen(state, action) {
             return state = { ...state, isMenuOpen: action.payload };
         },
-        setDocument(state, action) {
-            return state = { ...state, document: action.payload };
+        // setDocument(state, action) {
+        //     return state = { ...state, document: action.payload };
 
-        },
-        setTariff(state, action) {
-            return state = { ...state, tariff: action.payload };
+        // },
+        // setTariff(state, action) {
+        //     return state = { ...state, tariff: action.payload };
 
-        },
+        // },
 
     }
 })

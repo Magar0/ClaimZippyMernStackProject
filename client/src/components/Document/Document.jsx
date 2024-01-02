@@ -12,7 +12,7 @@ const DocumentTable = () => {
 
     const [isAddData, setIsAddData] = useState(false)
     // fetching data from api using saga and RTK Query
-    const { data, isLoading, isError } = useFetchDocumentQuery();
+    const { data, isLoading, isError, refetch } = useFetchDocumentQuery();
 
     const handleIsAddData = () => {
         setIsAddData(!isAddData)
@@ -26,11 +26,15 @@ const DocumentTable = () => {
         return <Error />
     }
 
+
     return (
         <table className='table mt-4 text-center'>
             <thead className="table-head">
                 <tr>
-                    <th>Document Type</th>
+                    <th>
+                        {!isAddData && <MdAdd className="add-button" onClick={handleIsAddData} />}
+                        Document Type
+                    </th>
                     <th>Document Description</th>
                     <th></th>
                     <th>Remarks</th>
@@ -38,10 +42,9 @@ const DocumentTable = () => {
 
             </thead>
             <tbody className="table-body">
-                {!isAddData && <MdAdd className="add-button" onClick={handleIsAddData} />}
-                {isAddData && <AddDocument handleIsAddData={handleIsAddData} />}
+                {isAddData && <AddDocument handleIsAddData={handleIsAddData} refetch={refetch} />}
                 {data && data.map((e) => (
-                    <DocumentTableData key={e._id} document={e} />
+                    <DocumentTableData key={e._id} document={e} refetch={refetch} />
                 ))}
             </tbody>
         </table>

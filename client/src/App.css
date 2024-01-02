@@ -6,6 +6,10 @@
     transition: all 0.3s;
 }
 
+.edit-button {
+    margin-right: 10px;
+}
+
 .edit-button:hover {
     color: black;
 }
@@ -15,7 +19,9 @@
 }
 
 .save-button {
-    color: green
+    color: green;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .save-button:hover {
@@ -24,6 +30,7 @@
 
 .cross-button {
     color: red;
+    cursor: pointer;
 }
 
 .cross-button:hover {
@@ -31,10 +38,68 @@
 }
 
 .add-button {
-    color: green;
+    color: blue !important;
     font-size: 2rem;
     position: absolute;
-    top: 0;
+    bottom: -34px;
     left: 10px;
     cursor: pointer;
+    z-index: 2;
+    background-color: greenyellow !important;
+}
+
+/* Table........... */
+
+.table {
+    margin-bottom: 30px;
+    display: block;
+    min-height: 140px;
+    max-height: 40vh;
+    overflow-y: auto;
+    border: solid 1px #0000003e;
+
+}
+
+.table>thead,
+.table>tbody {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    position: relative;
+}
+
+.table th {
+    border: solid 1px #0000003e;
+}
+
+.table thead th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--bs-secondary);
+    padding: 7px 2px;
+    color: white;
+}
+
+.table thead input {
+    width: 100%;
+    margin-top: 5px;
+    /* font-size: 0.9rem; */
+    padding: 5px;
+}
+
+.table tbody tr:nth-child(odd) td {
+    background-color: rgb(188, 246, 205);
+}
+
+.table tbody tr:nth-child(even) td {
+    background-color: rgb(205, 230, 238);
+}
+
+input {
+    border: solid 1px #0000003e;
+    padding: 5px;
+}
+
+.tariffTableEdit input {
+    width: 80%;
 }

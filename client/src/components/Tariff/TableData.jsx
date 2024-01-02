@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { tariffApi, useFetchTariffQuery } from "../../store/slices/tariffAPI";
 
 
-const TableData = ({ tariff, ind }) => {
+const TableData = ({ tariff, ind, refetch }) => {
 
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false);
@@ -13,15 +13,16 @@ const TableData = ({ tariff, ind }) => {
 
     const handleEditClick = (id) => {
         setIsEditing(!isEditing);
+        refetch();
     };
 
     const handleDelete = () => {
         dispatch(tariffApi.endpoints.deleteTariff.initiate(tariff._id));
-        dispatch(tariffApi.endpoints.fetchTariff.initiate())
-            .then(res => tariff = res.data)
-            .catch(err => console.error(err))
 
-        console.log(tariff);
+        setTimeout(() => {
+            refetch()
+        }, 1000);
+
     }
 
     return (

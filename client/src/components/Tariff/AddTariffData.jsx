@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im";
 import { useDispatch } from 'react-redux';
 import { tariffApi } from '../../store/slices/tariffAPI';
 
-const AddTariffData = ({ handleIsAddData }) => {
+const AddTariffData = ({ handleIsAddData, refetch }) => {
 
     const dispatch = useDispatch();
     const [editedData, setEditedData] = useState({
@@ -49,6 +49,7 @@ const AddTariffData = ({ handleIsAddData }) => {
     const handleSave = () => {
         handleIsAddData();
         dispatch(tariffApi.endpoints.postTariff.initiate(editedData))
+        refetch()
     }
 
     const handleCancel = () => {
@@ -60,7 +61,7 @@ const AddTariffData = ({ handleIsAddData }) => {
             <tr className='tariffTableEdit'>
                 <td>-</td>
                 <td><input type="text" name="czCatlogMasterId" value={editedData.czCatlogMasterId} onChange={handleChange} /> </td>
-                <td><input type="text" name="hcpCatlogId" value={editedData.hcpCatlogId} onChange={handleChange} /> </td>
+                <td><input type="text" name="hcpCatlogId" value={editedData.hcpCatlogId} placeholder='Number' onChange={handleChange} /> </td>
                 <td><input type="text" name="category" value={editedData.category} onChange={handleChange} /> </td>
                 <td><input type="text" name="title" value={editedData.title} onChange={handleChange} /> </td>
                 <td><input type="text" name='delRoom-rackRate' value={editedData.deluxeSingleRoomAC.rackRate} onChange={handleChange} /> </td>

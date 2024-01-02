@@ -13,7 +13,7 @@ const Table = () => {
 
     const [isAddData, setIsAddData] = useState(false)
     // fetching data from api using saga and RTK Query
-    const { data, isLoading, isError } = useFetchTariffQuery();
+    const { data, isLoading, isError, refetch } = useFetchTariffQuery();
 
     const handleIsAddData = () => {
         setIsAddData(!isAddData)
@@ -31,7 +31,10 @@ const Table = () => {
         <table className='table mt-4 '>
             <thead className="table-head">
                 <tr>
-                    <th rowSpan={3}>S.No.br <br /> <input type="text" placeholder='search' /> </th>
+                    <th rowSpan={3}>
+                        {!isAddData && <MdAdd className="add-button" onClick={handleIsAddData} />}
+                        S.No.br
+                        <br /> <input type="text" placeholder='search' /> </th>
                     <th rowSpan={3}>CZ Catlog Master Id <br /> <input type="text" placeholder='search' /></th>
                     <th rowSpan={3}>HCP Catlog Id <br /> (External Id) <br /> <input type="text" placeholder='search' /></th>
                     <th rowSpan={3}>Item Category <br /> <input type="text" placeholder='search' /></th>
@@ -53,10 +56,9 @@ const Table = () => {
 
             </thead>
             <tbody className="table-body">
-                {!isAddData && <MdAdd className="add-button" onClick={handleIsAddData} />}
-                {isAddData && <AddTariffData handleIsAddData={handleIsAddData} />}
+                {isAddData && <AddTariffData handleIsAddData={handleIsAddData} refetch={refetch} />}
                 {data && data.map((e, ind) => (
-                    <TableData key={e._id} tariff={e} ind={ind} />
+                    <TableData key={e._id} tariff={e} ind={ind} refetch={refetch} />
                 ))}
             </tbody>
         </table>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { documentApi } from '../../store/slices/documentApi';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { documentApi, useFetchDocumentQuery } from '../../store/slices/documentApi';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 import { MdEdit, MdDelete } from "react-icons/md";
 
 
-const DocumentTableData = ({ document }) => {
+const DocumentTableData = ({ document, refetch }) => {
 
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false);
@@ -22,6 +22,7 @@ const DocumentTableData = ({ document }) => {
         handleEditClick();
         const { _id, ...rest } = editedData
         dispatch(documentApi.endpoints.putDocument.initiate(rest))
+        refetch();
     }
 
     const handleCancel = () => {
@@ -33,9 +34,13 @@ const DocumentTableData = ({ document }) => {
     };
 
     const handleDelete = () => {
-        dispatch(documentApi.endpoints.documentApi.initiate(document._id));
+        dispatch(documentApi.endpoints.deleteDocument.initiate(document._id));
+        refetch()
     }
 
+    // useEffect(() => {
+    //     console.log("I m running");
+    // }, [data])
 
 
     const { type, description, remarks } = document

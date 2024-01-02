@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im";
 import { useDispatch } from 'react-redux';
 import { documentApi } from '../../store/slices/documentApi';
 
-const AddDocument = ({ handleIsAddData }) => {
+const AddDocument = ({ handleIsAddData, refetch }) => {
 
     const dispatch = useDispatch();
     const [editedData, setEditedData] = useState({
@@ -25,6 +25,9 @@ const AddDocument = ({ handleIsAddData }) => {
     const handleSave = () => {
         handleIsAddData();
         dispatch(documentApi.endpoints.postDocument.initiate(editedData))
+        setTimeout(() => {
+            refetch()
+        }, 1000);
     }
 
     const handleCancel = () => {

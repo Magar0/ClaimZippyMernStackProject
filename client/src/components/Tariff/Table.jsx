@@ -1,20 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { tariffApi, useFetchTariffQuery } from "../../store/slices/tariffAPI";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import TableData from "./TableData";
+import AddTariffData from "./AddTariffData";
+import { MdAdd } from "react-icons/md";
+import TariffTableEdit from "./TariffTableEdit";
 
 
 const Table = () => {
 
+    const [isAddData, setIsAddData] = useState(false)
     // fetching data from api using saga and RTK Query
     const { data, isLoading, isError } = useFetchTariffQuery();
 
-    // // useEffect(() => {
-    // //     const data = async () => await dispatch(tariffApi.endpoints.fetchTariff.initiate())
-    // //     console.log(data());
-    // // }, [])
+    const handleIsAddData = () => {
+        setIsAddData(!isAddData)
+    }
 
     if (isLoading) {
         return <Loading />
@@ -50,6 +53,8 @@ const Table = () => {
 
             </thead>
             <tbody className="table-body">
+                {!isAddData && <MdAdd className="add-button" onClick={handleIsAddData} />}
+                {isAddData && <AddTariffData handleIsAddData={handleIsAddData} />}
                 {data && data.map((e, ind) => (
                     <TableData key={e._id} tariff={e} ind={ind} />
                 ))}

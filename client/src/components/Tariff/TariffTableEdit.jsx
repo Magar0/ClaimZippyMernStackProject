@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { ImCross } from "react-icons/im";
 import { useDispatch } from 'react-redux';
 import { tariffApi } from '../../store/slices/tariffAPI';
-import { ImCross } from "react-icons/im";
 
 
 const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
@@ -35,7 +35,7 @@ const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
     const handleSave = () => {
         handleEditClick();
         const { _id, ...rest } = editedData
-        dispatch(tariffApi.endpoints.postTariff.initiate(rest))
+        dispatch(tariffApi.endpoints.putTariff.initiate(_id, rest))
         console.log("editedData");
         console.log(rest);
     }
@@ -45,7 +45,7 @@ const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
     }
 
     return (
-        <tr>
+        <tr className='tariffTableEdit'>
             <td>{ind}</td>
             <td><input type="text" name="czCatlogMasterId" value={editedData.czCatlogMasterId} onChange={handleChange} /> </td>
             <td><input type="text" name="hcpCatlogId" value={editedData.hcpCatlogId} onChange={handleChange} /> </td>

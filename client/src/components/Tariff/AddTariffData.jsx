@@ -49,7 +49,9 @@ const AddTariffData = ({ handleIsAddData, refetch }) => {
     const handleSave = () => {
         handleIsAddData();
         dispatch(tariffApi.endpoints.postTariff.initiate(editedData))
+        setTimeout(()=>{
         refetch()
+        })
     }
 
     const handleCancel = () => {

@@ -1,0 +1,24 @@
+.progressBar>div {
+    text-align: center;
+    width: min-content;
+    font-size: 0.8rem;
+}
+
+.progressBar p {
+    margin-top: 10px;
+}
+
+.progressBar {
+    position: relative;
+}
+
+.progressBar::after {
+    top: 10%;
+    left: 7%;
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 77%;
+    background-color: #0d6efd;
+    z-index: 0;
+}

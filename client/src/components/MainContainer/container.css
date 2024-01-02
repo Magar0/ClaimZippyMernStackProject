@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text-darkblue {
+    color: var(--bs-primary-color);
+}
+
+.box-2>div:first-child p {
+    font-size: 0.8rem;
+}
+
+.details div {
+    max-width: 200px;
+}
+
+.details h5 {
+    font-size: 1rem;
+    color: #000000c3;
+}
+
+.details p {
+    font-size: 0.9rem;
+    color: var(--bs-grey-color);
+}

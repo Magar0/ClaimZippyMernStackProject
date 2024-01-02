@@ -1,0 +1,12 @@
+
+# dependencies
+/client/node_modules/
+/server/node_modules/
+
+/..pnp.js
+
+/client/build
+/server/build
+
+/client/.env
+/server/.env

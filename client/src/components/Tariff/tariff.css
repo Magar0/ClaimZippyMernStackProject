@@ -1,0 +1,45 @@
+.tariff .category button {
+    border: 1px solid var(--bs-primary);
+    color: var(--bs-primary);
+    background-color: transparent;
+    padding: 7px 5px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.tariff .category button:first-child {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.tariff .category button:last-child {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.tariff .category button:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.table {
+    margin-bottom: 200px;
+}
+
+.table th {
+    border: solid 1px #0000003e;
+}
+
+.table thead th {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background-color: var(--bs-secondary);
+    padding: 7px 2px;
+}
+
+.table thead input {
+    width: 100%;
+    margin-top: 5px;
+    /* font-size: 0.9rem; */
+    padding: 5px;
+}

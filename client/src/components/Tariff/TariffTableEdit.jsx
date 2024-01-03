@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { tariffApi } from '../../store/slices/tariffAPI';
 
 
-const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
+const TariffTableEdit = ({ tariff, ind, handleEditClick, refetch }) => {
 
     const dispatch = useDispatch();
     const [editedData, setEditedData] = useState({ ...tariff });
@@ -34,10 +34,10 @@ const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
 
     const handleSave = () => {
         handleEditClick();
-        const { _id, ...rest } = editedData
-        dispatch(tariffApi.endpoints.putTariff.initiate(_id, { rest }))
-        console.log("editedData");
-        console.log(rest);
+        dispatch(tariffApi.endpoints.putTariff.initiate(editedData._id, editedData))
+        setTimeout(() => {
+            refetch()
+        }, 1000);
     }
 
     const handleCancel = () => {

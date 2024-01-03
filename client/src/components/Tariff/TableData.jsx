@@ -49,7 +49,7 @@ const TableData = ({ tariff, ind, refetch }) => {
             }
             {
                 isEditing &&
-                <TariffTableEdit tariff={tariff} ind={ind} handleEditClick={handleEditClick} />
+                <TariffTableEdit tariff={tariff} ind={ind} handleEditClick={handleEditClick} refetch={refetch} />
 
             }
         </>

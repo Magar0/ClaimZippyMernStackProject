@@ -32,4 +32,6 @@ export const tariffApi = createApi({
     })
 })
 
+console.log(tariffApi);
 export const { useFetchTariffQuery } = tariffApi;
+

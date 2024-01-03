@@ -20,6 +20,7 @@ export function* postTariffSaga(action) {
 
 export function* putTariffSaga(action) {
     const { id, body } = action.payload;
+    console.log("id", id);
     try {
         yield call(tariffApi.endpoints.putTariff.initiate, id, body);
     } catch (err) {

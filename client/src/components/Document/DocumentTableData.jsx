@@ -21,8 +21,10 @@ const DocumentTableData = ({ document, refetch }) => {
     const handleSave = () => {
         handleEditClick();
         const { _id, ...rest } = editedData
-        dispatch(documentApi.endpoints.putDocument.initiate(rest))
-        refetch();
+        dispatch(documentApi.endpoints.putDocument.initiate(_id, rest))
+        setTimeout(() => {
+            refetch()
+        }, 1000);
     }
 
     const handleCancel = () => {
@@ -35,7 +37,9 @@ const DocumentTableData = ({ document, refetch }) => {
 
     const handleDelete = () => {
         dispatch(documentApi.endpoints.deleteDocument.initiate(document._id));
-        refetch()
+        setTimeout(() => {
+            refetch()
+        }, 1000);
     }
 
     // useEffect(() => {

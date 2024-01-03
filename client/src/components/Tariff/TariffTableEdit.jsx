@@ -35,7 +35,7 @@ const TariffTableEdit = ({ tariff, ind, handleEditClick }) => {
     const handleSave = () => {
         handleEditClick();
         const { _id, ...rest } = editedData
-        dispatch(tariffApi.endpoints.putTariff.initiate(_id, rest))
+        dispatch(tariffApi.endpoints.putTariff.initiate(_id, { rest }))
         console.log("editedData");
         console.log(rest);
     }
